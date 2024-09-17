@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing dependencies..."
+      - pip install --upgrade awscli
+      - aws --version
+      - docker info
+
+  pre_build:
+    commands:
+      - echo "Decrypting Docker password..."
+      - DOCKER_PASSWORD=$(aws ssm get-parameter --name mydockerpassword --with-decryption --query 'Parameter.Value' --output text)
+      
