@@ -11,5 +11,5 @@ phases:
   pre_build:
     commands:
       - echo "Decrypting Docker password..."
-      - DOCKER_PASSWORD=$(aws ssm get-parameter --name mydockerpassword --with-decryption --query 'Parameter.Value' --output text)
+      - DOCKER_PASSWORD=$(aws ssm get-parameter --name dockerhubpass --with-decryption --query 'Parameter.Value' --output text)
       
