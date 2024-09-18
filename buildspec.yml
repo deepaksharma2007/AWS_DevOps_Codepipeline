@@ -12,4 +12,21 @@ phases:
     commands:
       - echo "Decrypting Docker password..."
       - DOCKER_PASSWORD=$(aws ssm get-parameter --name dockerhubpass --with-decryption --query 'Parameter.Value' --output text)
+
+      - echo "Logging into Docker Hub..."
+      - docker login -u deepak2007 -p $DOCKER_PASSWORD
       
+   build:
+    commands:
+      - echo "build the docker image ..."
+      - docker build  -t deepak2007/codecommit_app .
+      - docker images
+
+  post_build:
+    commands:
+      - echo "final pushing image to docker hub .."
+      - docker push deepak2007/codecommit_app
+
+artifacts:
+  files:
+    - '**/*'
