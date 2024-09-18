@@ -16,7 +16,7 @@ phases:
       - echo "Logging into Docker Hub..."
       - docker login -u deepak2007 -p $DOCKER_PASSWORD
       
-   build:
+  build:
     commands:
       - echo "build the docker image ..."
       - docker build  -t deepak2007/codecommit_app .
