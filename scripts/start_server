@@ -1,0 +1,6 @@
+#!/bin/bash
+systemctl enable docker --now
+
+docker rm -f myapp
+
+docker run -dit --name myapp -p 80:5000 deepak2007/codecommit_app
