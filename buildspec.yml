@@ -27,6 +27,7 @@ phases:
       - echo "final pushing image to docker hub .."
       - docker push deepak2007/codecommit_app
 
+# It means the CodeBuild uploads artifacts to S3 after the build is completed and from S3 CodeDeploy picks the build Code and then deploys.
 artifacts:
   files:
     - '**/*'
